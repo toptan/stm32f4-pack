@@ -23,3 +23,9 @@ if [ -z $PROJECT_NAME ]; then
 	echo "Usage: create-stm32-project.sh -n <project_name>"
 	exit 1
 fi
+
+cp -R /usr/local/share/stm32-pack/template $PROJECT_NAME
+sed -i "s/@@PROJECT_NAME@@/$PROJECT_NAME/g" $PROJECT_NAME/CMakeLists.txt
+
+echo "Your project is prepared in directory `pwd`/$PROJECT_NAME"
+echo "Don't forget to append -DCMAKE_TOOLCHAIN_FILE=/usr/local/share/stm32-pack/cmake/arm-toolchain.cmake to your cmake command!"

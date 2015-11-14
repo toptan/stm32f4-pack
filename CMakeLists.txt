@@ -5,10 +5,13 @@ include(InstallRequiredSystemLibraries)
 
 # List of files to install
 file(GLOB scripts "bin/*")
-
+file(GLOB cmake "cmake")
+file(GLOB template "template")
 
 # Installing required files
-install(FILES ${scripts} DESTINATION bin)
+install(PROGRAMS ${scripts} DESTINATION bin)
+install(DIRECTORY ${cmake} DESTINATION share/${PROJECT_NAME})
+install(DIRECTORY ${template} DESTINATION share/${PROJECT_NAME})
 
 set(CPACK_GENERATOR "DEB")
 set(CPACK_PACKAGE_CONTACT "Toplica Tanasković <toplicius@gmail.com>")
@@ -23,6 +26,5 @@ set(CPACK_PACKAGE_VERSION_PATCH "0")
 set(CPACK_PACKAGING_INSTALL_PREFIX "/usr/local")
 set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA "${CMAKE_SOURCE_DIR}/postinst")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS "gcc-arm-none-eabi, g++, cmake, python-setuptools")
-#set(CPACK_INSTALLED_DIRECTORIES "./bin")
 include(CPack)
 
