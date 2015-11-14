@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "Executin post installation steps for STM32 pack"
+pushd /tmp
+echo "Installing USB HID bootloader mikroe-uhd."
+git clone https://github.com/thotypous/mikroe-uhb
+cd mikroe-uhb
+make && make install
