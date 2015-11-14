@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.11)
-project(stm32-pack)
+project(stm32f4-pack)
 
 include(InstallRequiredSystemLibraries)
 
@@ -24,6 +24,9 @@ if (DISTRO STREQUAL Ubuntu)
 	set(CPACK_DEBIAN_PACKAGE_DEPENDS "gcc-arm-none-eabi, g++, cmake, python-setuptools")
 elseif (${DISTRO} STREQUAL "Fedora")
 	set(CPACK_GENERATOR "RPM")
+    set(CPACK_RPM_PACKAGE_GROUP "Development/Tools")
+    set(CPACK_RPM_PACKAGE_REQUIRES "arm-none-eabi-gcc-cs, gcc-c++, cmake, python-setuptools")
+    set(CPACK_RPM_POST_INSTALL_SCRIPT_FILE "${CMAKE_SOURCE_DIR}/postinst")
 else()
 	message("Unsupported linux distribution: ${DISTRO}")
 endif()
@@ -37,6 +40,5 @@ set(CPACK_PACKAGE_VENDOR "ETF Beograd")
 set(CPACK_PACKAGE_VERSION_MAJOR "1")
 set(CPACK_PACKAGE_VERSION_MINOR "0")
 set(CPACK_PACKAGE_VERSION_PATCH "0")
-set(CPACK_PACKAGING_INSTALL_PREFIX "/usr/local")
 include(CPack)
 
