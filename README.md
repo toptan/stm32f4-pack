@@ -8,7 +8,7 @@ On your linux distribution of choice:
 2. Create build directory outside the source code
 3. Execute 
 	`cmake <path_to_the_source_code>`
-4. Execute `make`
+4. Execute `make package`
 
 Depending of the distribution you use the RPM or DEB package will be created.
 That package you can copy to other machines, or put it in a repository, and install. The installation will automatically pull all the dependencies and will build [mikroe-uhb](https://github.com/thotypous/mikroe-uhb) tool for flashing devices via USB.
