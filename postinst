@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Executin post installation steps for STM32 pack"
+echo "Executin post installation steps for STM32F4 pack"
 pushd /tmp
 echo "Installing USB HID bootloader mikroe-uhd."
 git clone https://github.com/thotypous/mikroe-uhb
